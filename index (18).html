@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tap to Win!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      background-color: black;
+      color: white;
+      font-family: sans-serif;
+      overflow: hidden;
+    }
+    h1 {
+      margin-top: 100px;
+      font-size: 3rem;
+    }
+    button {
+      font-size: 2rem;
+      padding: 1rem 2rem;
+      background: lime;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .crazy {
+      animation: shake 10s infinite;
+    }
+    @keyframes shake {
+      0% { transform: translate(1px, 1px); }
+      25% { transform: translate(-1px, -2px); }
+      50% { transform: translate(-3px, 0px); }
+      75% { transform: translate(3px, 2px); }
+      100% { transform: translate(1px, -1px); }
+    }
+  </style>
+</head>
+<body>
+  <h1>muscle physiology - muscloskeleton system </h1>
+  <button onclick="startPrank()">100 mcqs with detailed explanation!</button>
+
+  <audio id="scream" src="https://www.myinstants.com/media/sounds/wilhelm_scream.mp3"></audio>
+
+  <script>
+    function startPrank() {
+      const scream = document.getElementById("scream");
+
+      document.body.classList.add("crazy");
+
+      let flashInterval = setInterval(() => {
+        document.body.style.backgroundColor =
+          "#" + Math.floor(Math.random() * 16777215).toString(16);
+      }, 100);
+
+      scream.play();
+      scream.loop = true;
+
+      if (navigator.vibrate) {
+        navigator.vibrate([500, 200, 500, 200, 500]);
+      }
+
+      setTimeout(() => {
+        scream.pause();
+        scream.currentTime = 0;
+        clearInterval(flashInterval);
+        document.body.classList.remove("crazy");
+        document.body.style.backgroundColor = "black";
+        alert("Okay okay! i have already paid it back 😂");
+      }, 10000); // prank lasts for 10 minutes
+    }
+  </script>
+</body>
+</html>
